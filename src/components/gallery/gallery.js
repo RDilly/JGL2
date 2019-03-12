@@ -29,12 +29,13 @@ export default class Gallery extends Component {
 
                 <article className="card movies card">
                 {
-                    this.props.ratings
-                    .map(ratings =>
+                    this.props.movies.map(movie =>
                         <GalleryCard {...this.props}
-                        key={`Movie-${ratings.id}`}
-                            ratings={ratings}
+                        key={`Movie-${movie.id}`}
+                            ratings={this.props.ratings}
                             movies={this.props.movies}
+                            movie={movie}
+                            getPosterURL={this.props.getPosterURL}
                             />
                     )
                 }

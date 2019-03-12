@@ -8,25 +8,24 @@ import UserManager from "../modules/UserManager";
 export default class ApplicationViews extends Component {
     state = {
         movies: [],
-        ratings: [],
+        rats: [],
         users: [],
     }
 
-    // getPosterURL = (TMId) => {
-    //     let data = TMDBManager.getPosterPath(TMId)
-    //     let poster_path = data.poster_path
-    //     return TMDBManager.getPoster(poster_path)
-    // }
+    getPosterURL = (TMId) => {
+       let poster_path = TMDBManager.getPosterPath(TMId);
+        TMDBManager.getPoster(poster_path)
+    }
 
-    // getMovies = () => {
-    //     RatingsManager.getMovies()
-    //         .then(movies => this.setState({ movies: movies }))
-    // }
+    getMovies = () => {
+        RatingsManager.getMovies()
+            .then(movies => this.setState({ movies: movies }))
+    }
 
-    // getRatings = () => {
-    //     RatingsManager.getRatings()
-    //         .then(ratings => this.setState({ ratings: ratings }))
-    // }
+    getRatings = () => {
+        RatingsManager.getRatings()
+            .then(ratings => this.setState({ ratings: ratings }))
+    }
 
     componentDidMount() {
         const newState = {};
@@ -41,7 +40,11 @@ export default class ApplicationViews extends Component {
             .then(ratings => newState.ratings= ratings)
 
             .then(console.log(newState))
-            .then(() => this.setState(newState))
+            .then(() => this.setState({
+                movies: newState.movies,
+                users: newState.users,
+                rats: newState.ratings
+            }))
             .then(() => console.log("state is:", this.state))
         }
 
@@ -52,7 +55,7 @@ export default class ApplicationViews extends Component {
             <Route path="/" render={props => {
                 return <Gallery {...props}
                     users={this.state.users}
-                    ratings={this.state.ratings}
+                    ratings={this.state.rats}
                     movies={this.state.movies}
                     getPosterURL={this.getPosterURL}
                     getMovies={this.getMovies}

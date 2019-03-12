@@ -13,8 +13,12 @@ export default {
     },
 
     getPosterPath(TMId) {
+      var e=[]
       return fetch(`https://api.themoviedb.org/3/movie/${TMId}?api_key=520a8738d38542bfb404376806005d5a&language=en-US`)
       .then(e => e.json())
+      .then( e.forEach(result => {
+        return result.poster_path
+      }))
     },
     
     getPoster(poster_path) {
