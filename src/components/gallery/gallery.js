@@ -19,7 +19,7 @@ export default class Gallery extends Component {
                     <button type="button"
                         className="btn btn-success"
                         onClick={() => {
-                            history.push("/UserView")
+                            this.props.history.push("/UserView")
                         }
                         }>
                         Your Ratings

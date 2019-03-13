@@ -4,6 +4,7 @@ import Gallery from "./gallery/gallery";
 import RatingsManager from "../modules/RatingsManager";
 import TMDBManager from "../modules/TMDBManager";
 import UserManager from "../modules/UserManager";
+import UserView from "../components/UserView/UserView"
 
 export default class ApplicationViews extends Component {
     state = {
@@ -52,7 +53,7 @@ export default class ApplicationViews extends Component {
 
     render() {
         return <React.Fragment>
-            <Route path="/" render={props => {
+            <Route exact path="/" render={props => {
                 return <Gallery {...props}
                     users={this.state.users}
                     ratings={this.state.rats}
@@ -62,7 +63,15 @@ export default class ApplicationViews extends Component {
                      />
             }}
              />
-        </React.Fragment>
+            <Route exact path="/UserView" render={props => {
+                return <UserView {...props}
+                users={this.state.users}
+                    ratings={this.state.rats}
+                    movies={this.state.movies}
+                    getPosterURL={this.getPosterURL}
+                    getMovies={this.getMovies}
+                    />
     }
-
+            } /></React.Fragment>
+}
 }

@@ -17,7 +17,7 @@ export default {
       return fetch(`${Settings.remoteURL}/movies?userId=${activeUser}&_sort=date&_order=asc`).then(e => e.json())
     },
 
-    getRatings() {
+    getRatings(movieId) {
       return fetch(`${Settings.remoteURL}/ratings`)
       .then(ratings => ratings.json())
     },
