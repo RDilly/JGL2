@@ -1,21 +1,57 @@
 import RatingsManager from "../../modules/RatingsManager"
 import React, { Component } from "react"
 import ReactDOM from 'react-dom';
-import StarRatingComponent from 'react-star-rating-component';
+import RatingWidget from 'react-rating-widget'
 import { get } from "http";
 import "./user.css"
-import "../../../node_modules/react-star-rating/dist/css/react-star-rating.min.css"
+import UserModal from "./UserModal";
 
 
 export default class UserCard extends Component {
 
-    
+        state = {
+            id: "",
+            movieId: "",
+            userId: "",
+            stars: "",
+            memo: ""
+        }
+
+        starsClicked = ""
+
+
+    updateExistingRating = evt => {
+        evt.preventDefault()
+          const editedRating = {
+            id: this.props.match.params.ratingId,
+            movieId: this.props.rating.movieId,
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            stars: parseInt(this.starsClicked),
+            memo: this.state.memo
+          }
+          
+          console.log(editedRating);}
 
     componentDidMount() {
         console.log(this.props.ratings)
         console.log(this.props.rating)
         console.log(this.props.movie)
+
+        this.setState({
+            id: this.props.match.params.ratingId,
+            movieId: this.props.rating.movieId,
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            stars: this.props.rating.stars,
+            memo: this.props.rating.memo
+          });
     }
+
+    storeAnswers(answer) {
+       this.starsClicked = answer.answer
+        console.log(`You have rated "${this.props.movie.title}" ` + answer.answer +" stars.");
+    }
+
+    
 
     render() {
         let title = this.props.movie.title
@@ -27,24 +63,32 @@ export default class UserCard extends Component {
         let fullPosterPath = `${ppURL}${URLpp}`
         let stars = this.props.rating.stars
 
+        const ratingReactions = { 1: "Joseph Gordon Leave-it", 2: "Joseph Gordon Leftovers", 3: "Joseph Gordon Luke-warm", 4: "Joseph Gordon Like-it", 5: "Joseph Gordon Loved it!" };
+
+        const reactionStyle = {
+            textAlign: 'center', padding: '7px 0 4px', color: '#72727d', font: '700 14px/16px Roboto, sans-serif', borderRadius: '20px', backgroundColor: '#fdedee', width: '97px', margin: '20px auto 0', transition: '0.2s all ease-in-out',
+        };
+
         console.log(this.props.rating)
         console.log(TMId)
         console.log(movieId)
         return (
             <div>
-                <h3>{title}</h3>
-                <img className="poster" src={fullPosterPath} alt="movieposter"/>
-                <div>
-                    <StarRatingComponent
-                        name="rate2"
-                        editing={false}
-                        starCount={5}
-                        value={stars}
-                    />
-                </div>
-                <p>{this.props.rating.memo}</p>
+                <h3>{title}</h3> <UserModal {...this.props}
+                        key={`Movie-${this.props.rating.id}`}
+                            ratings={this.props.ratings}
+                            movies={this.props.movies}
+                            rating={this.props.rating}
+                            movie={this.props.movie}
+                            getPosterURL={this.props.getPosterURL}
+                            stars={stars}
+                            ratingReactions={ratingReactions}
+                            reactionStyle={reactionStyle}
+                            memo={this.props.memo}
+                            />
+                <img className="poster" src={fullPosterPath} alt="movieposter" />
             </div>
 
         );
-    }
+        }
 }

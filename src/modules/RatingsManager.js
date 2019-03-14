@@ -33,13 +33,13 @@ export default {
     },
 
 
-    updateMovie(editedMovie) {
-        return fetch(`${Settings.remoteURL}/movies/${editedMovie.id}`, {
+    updateRating(editedRating) {
+        return fetch(`${Settings.remoteURL}/ratings/${editedRating.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(editedMovie)
+          body: JSON.stringify(editedRating)
         }).then(data => data.json());
     }
 };

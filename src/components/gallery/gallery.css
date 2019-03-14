@@ -1,3 +1,10 @@
 .poster {
     height: 300px
   }
+
+.memoPrompt {
+    color: dimgrey
+}
+.stars {
+    font-size: 45px
+}

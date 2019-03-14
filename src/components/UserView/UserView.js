@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
+import SearchMovies from "./SearchMovies"
 
 
 export default class UserView extends Component {
@@ -13,11 +14,12 @@ export default class UserView extends Component {
         const history = this.props.history;
         return (
             <React.Fragment>
+                <SearchMovies {...this.props}/>
                 <article className="card movies card">
                 {
                     this.props.ratings.filter(ratings => ratings.userId === userId)
                     .map(rating =>
-                        this.props.movies.filter(movies => movies.id === rating.movieId).map(movie=>
+                        this.props.movies.filter(movies => movies.id === rating.movieId).map(movie =>
                         <UserCard {...this.props}
                         key={`Movie-${rating.id}`}
                             ratings={this.props.ratings}
