@@ -32,6 +32,15 @@ export default {
         }).then(data => data.json())
     },
 
+    addRating(newRating) {
+      return fetch(`${Settings.remoteURL}/ratings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRating)
+      }).then(data => data.json())
+  },
 
     updateRating(editedRating) {
         return fetch(`${Settings.remoteURL}/ratings/${editedRating.id}`, {

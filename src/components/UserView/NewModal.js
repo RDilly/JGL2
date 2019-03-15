@@ -1,19 +1,30 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form } from 'reactstrap';
-import RatingsManager from '../../modules/RatingsManager'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
 import RatingWidget from 'react-rating-widget'
+import RatingsManager from '../../modules/RatingsManager'
+export default class NewModal extends React.Component {
 
-class ModalExample extends React.Component {
+    state = {
+        id: "",
+        movieId: "",
+        userId: "",
+        stars: "",
+        memo: ""
+    }
+
+    starsClicked = ""
+    selection = ""
+
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
             unmountOnClose: true
         };
-
         this.toggle = this.toggle.bind(this);
         this.changeUnmountOnClose = this.changeUnmountOnClose.bind(this);
     }
+
 
     toggle() {
         this.setState(prevState => ({
@@ -21,47 +32,88 @@ class ModalExample extends React.Component {
         }));
     }
 
+    AddRating = evt => {
+        this.toggle()
+        evt.preventDefault()
+          const newRating = {
+              title: this.selection.value,
+            movieId: this.selection.movieId,
+            userId: parseInt(sessionStorage.getItem("credentials")),
+            stars: parseInt(this.starsClicked),
+            memo: document.querySelector("#memo").value
+          }
+          RatingsManager.addRating(newRating)
+          console.log(newRating)}
+
+    testtest = () => {
+        return this.props.record.find(function (record) {
+            return record.grab === 1;
+        }) || {}
+    }
+
+    storeAnswers = (answer) => {
+        this.starsClicked = answer.answer
+        console.log(`You have rated "${this.selection.key}" ` + answer.answer + " stars.");
+    }
+
     changeUnmountOnClose(e) {
         let value = e.target.value;
         this.setState({ unmountOnClose: JSON.parse(value) });
     }
 
-    storeAnswers(answer) {
-        this.starsClicked = answer.answer
-        console.log(`You have rated "${this.props.selItem.value}" ` + answer.answer + " stars.");
+    componentDidMount() {
+        this.selection = this.props.record.find(function (record) {
+            return record.grab === 1;
+        }) || {};
+
+
     }
 
+
     render() {
+        this.componentDidMount()
+        console.log(this.selection.key)
+        let ppURL = "https://image.tmdb.org/t/p/original/"
+        let URLpp = this.selection.ppath
+        let fullPosterPath = `${ppURL}${URLpp}`
 
-        console.log(this.props.selItem)
+
         const ratingReactions = { 1: "Joseph Gordon Leave-it", 2: "Joseph Gordon Leftovers", 3: "Joseph Gordon Luke-warm", 4: "Joseph Gordon Like-it", 5: "Joseph Gordon Loved it!" };
-
         const reactionStyle = {
             textAlign: 'center', padding: '7px 0 4px', color: '#72727d', font: '700 14px/16px Roboto, sans-serif', borderRadius: '20px', backgroundColor: '#fdedee', width: '97px', margin: '20px auto 0', transition: '0.2s all ease-in-out',
         };
+
+        
         return (
             <div>
                 <Form inline onSubmit={(e) => e.preventDefault()}>
+                    <FormGroup>
+                        <Label for="unmountOnClose">UnmountOnClose value</Label>{' '}
+                        <Input type="select" name="unmountOnClose" id="unmountOnClose" onChange={this.changeUnmountOnClose}>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </Input>
+                    </FormGroup>
                     {' '}
-                    <Button color="danger" onClick={this.toggle}>add new review</Button>
+                    <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
                 </Form>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} unmountOnClose={this.state.unmountOnClose}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>{this.selection.key}</ModalHeader>
                     <ModalBody>
-                        <div className="form-group">
-                            <label className="memoPrompt" htmlFor="title">prompt</label>
-                            <div style={{ position: 'relative' }}>
-                                <div>
-                                    <RatingWidget
-                                        iconCount={5}
-                                        reactionLables={ratingReactions}
-                                        reactionStyle={reactionStyle}
-                                        storeAnswers={this.storeAnswers.bind(this)} />
-                                </div> </div> </div>
-                        <Input type="textarea" placeholder="Write something (data should remain in modal if unmountOnClose is set to false)" rows={5} />
+                        <div id="modalPoster"><img class="poster" src={fullPosterPath} /></div>
+                        <div style={{ position: 'relative' }}>
+                            <div>
+                                <RatingWidget
+                                    iconCount={5}
+                                    reactionLables={ratingReactions}
+                                    reactionStyle={reactionStyle}
+                                    storeAnswers={this.storeAnswers.bind(this)} />
+                            </div>
+                        </div>
+                        <Input type="textarea" id="memo" placeholder="Leave a review!" rows={5} />
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                        <Button color="primary" onClick={this.AddRating}>Add Rating!</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -69,5 +121,3 @@ class ModalExample extends React.Component {
         );
     }
 }
-
-export default ModalExample;
