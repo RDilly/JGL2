@@ -4,8 +4,8 @@ export default {
     get(id) {
         return fetch(`${Settings.remoteURL}/movies/${id}`).then(e => e.json());
     },
-    deleteMovie(id) {
-        return fetch(`${Settings.remoteURL}/movies/${id}`, {
+    deleteReview(id) {
+        return fetch(`${Settings.remoteURL}/ratings/${id}`, {
             "method": "DELETE"
         }).then(e => e.json());
     },
@@ -33,7 +33,7 @@ export default {
     },
 
     addRating(newRating) {
-      return fetch(`${Settings.remoteURL}/ratings`, {
+      return fetch(`${Settings.remoteURL}/ratings/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

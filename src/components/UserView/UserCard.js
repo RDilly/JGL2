@@ -5,6 +5,7 @@ import RatingWidget from 'react-rating-widget'
 import { get } from "http";
 import "./user.css"
 import UserModal from "./UserModal";
+import { Button } from 'reactstrap'
 
 
 export default class UserCard extends Component {
@@ -87,6 +88,11 @@ export default class UserCard extends Component {
                             memo={this.props.memo}
                             />
                 <img className="poster" src={fullPosterPath} alt="movieposter" />
+                <button type="button"
+                        className="btn btn-success"
+                        onClick={() => RatingsManager.deleteReview(this.props.rating.id)}>
+                        Delete Review
+                </button>
             </div>
 
         );
