@@ -51,7 +51,7 @@ export default class UserModal extends React.Component {
       <div>
         <Form inline onSubmit={(e) => e.preventDefault()}>
           {' '}
-          <Button color="danger" onClick={this.toggle}>Change Rating</Button>
+          <Button color="info" onClick={this.toggle}>Change Rating</Button>
         </Form>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} unmountOnClose={this.state.unmountOnClose}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>

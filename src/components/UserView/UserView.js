@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
 import SearchMovies from "./SearchMovies"
+import { Container, Row, Col, CardColumns } from 'reactstrap';
+
 
 
 export default class UserView extends Component {
@@ -15,7 +17,8 @@ export default class UserView extends Component {
         return (
             <React.Fragment>
                 <SearchMovies {...this.props}/>
-                <article className="card movies card">
+                <CardColumns>
+
                 {
                     this.props.ratings.filter(ratings => ratings.userId === userId)
                     .map(rating =>
@@ -30,7 +33,8 @@ export default class UserView extends Component {
                             />
                     ))
                 }
-                </article>
+
+                </CardColumns>   
             </React.Fragment>
         )
     }

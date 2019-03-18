@@ -26,10 +26,16 @@ export default class NewModal extends React.Component {
     }
 
 
-    toggle() {
+    toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
+    }
+
+    toggleTotal = () => {
+        this.toggle()
+        this.componentDidMount()
+        this.forceUpdate()
     }
 
     AddRating = evt => {
@@ -65,12 +71,13 @@ export default class NewModal extends React.Component {
         this.selection = this.props.record.find(function (record) {
             return record.grab === 1;
         }) || {};
-
+        console.log("test test", this.props.record)
 
     }
 
 
     render() {
+        
         this.componentDidMount()
         console.log(this.selection.key)
         let ppURL = "https://image.tmdb.org/t/p/original/"
@@ -87,15 +94,8 @@ export default class NewModal extends React.Component {
         return (
             <div>
                 <Form inline onSubmit={(e) => e.preventDefault()}>
-                    <FormGroup>
-                        <Label for="unmountOnClose">UnmountOnClose value</Label>{' '}
-                        <Input type="select" name="unmountOnClose" id="unmountOnClose" onChange={this.changeUnmountOnClose}>
-                            <option value="true">true</option>
-                            <option value="false">false</option>
-                        </Input>
-                    </FormGroup>
                     {' '}
-                    <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                    <Button color="info" onClick={this.toggleTotal}>Create New Review</Button>
                 </Form>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} unmountOnClose={this.state.unmountOnClose}>
                     <ModalHeader toggle={this.toggle}>{this.selection.key}</ModalHeader>
@@ -114,7 +114,7 @@ export default class NewModal extends React.Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.AddRating}>Add Rating!</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="secondary" onClick={this.toggleTotal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

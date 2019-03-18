@@ -1,23 +1,32 @@
 import ReactSearchBox from 'react-search-box'
 import ReactDOM from 'react-dom'
 import React, { Component, PropTypes } from 'react'
+import { Container, Row, Col } from 'reactstrap';
 import NewModal from './NewModal';
  
 
 export default class SearchMovies extends Component {
-  data = []
-  record= []
-
-  onSelectF = (record) => {
-    this.record.push(record)
-    
-    this.record =  this.record.filter(record => record.grab === 1) 
-    console.log(this.record)
+  state = {
+    record: []
   }
 
-  render() {
+data = []
+  
+
+  onSelectF = (record) => {
+    this.setState({ record: [record] })
+    
+    // this.state.record =  this.state.record.filter(record => record.grab === 1) 
+    console.log(this.state.record);
+
+    while(this.data.length > 0) {
+      this.data.pop();
+  }}
+    
+
+  makeData() {
     this.props.movies.map(movie => {
-      this.data.push({
+     this.data.push({
         key: movie.title,
         value: movie.title,
         movieId: movie.id,
@@ -25,25 +34,27 @@ export default class SearchMovies extends Component {
         grab: 1,
       })
         })
+}
+
+  render() {
+    this.makeData()
     console.log(this.data)
     return (
-      <div>
-      <div>
+      <Container>
+      <Row>
       <ReactSearchBox
-        placeholder="Placeholder"
+        placeholder="Select a Movie!"
         value="Doe"
         data={this.data}
         callback={record => console.log(record)}
         onSelect={record => this.onSelectF(record)}
       />
-      </div>
-      <div>
          
       <NewModal {...this.props}
-      record={this.record}
+      record={this.state.record}
          />
-      </div>
-      </div>
+      </Row>
+      </Container>
     )
   }
 }

@@ -5,7 +5,8 @@ import RatingWidget from 'react-rating-widget'
 import { get } from "http";
 import "./user.css"
 import UserModal from "./UserModal";
-import { Button } from 'reactstrap'
+import { Button, Container, Row, Col, Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle  } from 'reactstrap'
 
 
 export default class UserCard extends Component {
@@ -74,8 +75,15 @@ export default class UserCard extends Component {
         console.log(TMId)
         console.log(movieId)
         return (
-            <div>
-                <h3>{title}</h3> <UserModal {...this.props}
+            
+            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+                <Col xs="auto">
+                <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
+                </Col>
+                <CardTitle position="center">{title}</CardTitle>
+                <Row id="buttonRow">
+                <Col>
+                 <UserModal {...this.props}
                         key={`Movie-${this.props.rating.id}`}
                             ratings={this.props.ratings}
                             movies={this.props.movies}
@@ -87,13 +95,12 @@ export default class UserCard extends Component {
                             reactionStyle={reactionStyle}
                             memo={this.props.memo}
                             />
-                <img className="poster" src={fullPosterPath} alt="movieposter" />
-                <button type="button"
-                        className="btn btn-success"
-                        onClick={() => RatingsManager.deleteReview(this.props.rating.id)}>
-                        Delete Review
-                </button>
-            </div>
+                </Col>
+                <Col>
+                <Button color="dark" onClick={() => RatingsManager.deleteReview(this.props.rating.id)}>Delete Review</Button>{' '}
+                </Col>
+            </Row>
+            </Card>
 
         );
         }
