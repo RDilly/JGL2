@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 
 ReactDOM.render(
   <Router>
-    <Nutshell />
+    <Nutshell style={{backgroundColor: '#4F2F4F'}}/>
   </Router>,
   document.getElementById("root")
 )

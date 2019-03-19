@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component';
 import { get } from "http";
 import "./gallery.css"
+import GalleryModal from './galleryModal'
+import { Button, Container, Row, Col, Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle  } from 'reactstrap'
 import "../../../node_modules/react-star-rating/dist/css/react-star-rating.min.css"
 
 
@@ -31,12 +34,15 @@ export default class GalleryCard extends Component {
         if (ratings.length == 0) {
             console.log("if")
             return (
-                <div>
-                    <h3>{title}</h3>
-                    <img class="poster" src={fullPosterPath} />
-                    <div>
-                    </div>
-                </div>
+
+                <Card body style={{ textAlign: 'center', color: '#6f6e6e', backgroundColor: '#e6e6e6', borderColor: '#e6e6e6' }}>
+                <Col><CardTitle position="center">{title}</CardTitle></Col>
+                <Row buffer="20px"><Col></Col><GalleryModal  {...this.props}
+                        movie={this.props.movie}/><Col></Col></Row>
+                <Col xs="auto">
+                <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
+                </Col>
+            </Card>
     
             );
             
@@ -51,9 +57,12 @@ export default class GalleryCard extends Component {
             console.log("starsArray", starsArray)
             console.log("avg", avg)
         return (
-            <div>
-                <h3>{title}</h3>
-                <img className="poster" src={fullPosterPath} />
+
+
+                <Card body style={{ textAlign: 'center', color: '#6f6e6e', backgroundColor: '#e6e6e6', borderColor: '#e6e6e6' }}>
+                
+                <Col><CardTitle position="center">{title}</CardTitle></Col>
+                <Col>
                 <div>
                     <StarRatingComponent
                         name="rate2"
@@ -62,8 +71,12 @@ export default class GalleryCard extends Component {
                         value={avg}
                     />
                 </div>
-            </div>
-
+                </Col>
+                
+                <Col xs="auto">
+                <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
+                </Col>
+            </Card>
         );
     }
 }

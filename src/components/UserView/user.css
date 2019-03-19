@@ -1,5 +1,12 @@
-
+.card-columns {
+    column-count: 4;
+  }
 
 .SearchPoster {
     height: 30px
+  }
+
+
+.card{
+  background-color: #4F2F4F
   }

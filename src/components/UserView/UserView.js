@@ -16,6 +16,7 @@ export default class UserView extends Component {
         const history = this.props.history;
         return (
             <React.Fragment>
+                 <style>{'body { background-color:  #f9f9f9; }'}</style>
                 <SearchMovies {...this.props}/>
                 <CardColumns>
 

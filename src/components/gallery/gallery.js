@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import GalleryCard from "./galleryCard"
 import StarRatingComponent from "react-star-rating-component"
+import { Button, CardColumns  } from 'reactstrap'
+import "./gallery.css"
+
 
 export default class Gallery extends Component {
 
@@ -14,20 +17,9 @@ export default class Gallery extends Component {
         console.log(this.props)
         return (
             <React.Fragment>
+ <style>{'body { background-color:  #f9f9f9; }'}</style>
 
-                <div>
-                    <button type="button"
-                        className="btn btn-success"
-                        onClick={() => {
-                            this.props.history.push("/UserView")
-                        }
-                        }>
-                        Your Ratings
-                </button>
-                </div>
-
-
-                <article className="card movies card">
+                <CardColumns>
                 {
                     this.props.movies.map(movie =>
                         <GalleryCard {...this.props}
@@ -39,7 +31,7 @@ export default class Gallery extends Component {
                             />
                     )
                 }
-                </article>
+                </CardColumns>
             </React.Fragment>
 
         )

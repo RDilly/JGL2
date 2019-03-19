@@ -52,8 +52,8 @@ export default class ApplicationViews extends Component {
     
 
     render() {
-        return <React.Fragment>
-            <Route exact path="/" render={props => {
+        return <React.Fragment >
+            <Route exact path="/"  render={props => {
                 return <Gallery {...props}
                     users={this.state.users}
                     ratings={this.state.rats}
