@@ -40,15 +40,18 @@ data = []
     this.makeData()
     console.log(this.data)
     return (
+      
       <Container>
-      <Row>
+       
+      <Row marginHeight="20px">
+      <Col sm="12" md={{ size: 4, offset: 3 }}>
       <ReactSearchBox
         placeholder="Select a Movie!"
         value="Doe"
         data={this.data}
         callback={record => console.log(record)}
         onSelect={record => this.onSelectF(record)}
-      />
+      /></Col>
          
       <NewModal {...this.props}
       record={this.state.record}

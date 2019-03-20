@@ -17,7 +17,7 @@ class Nutshell extends Component {
   }
   render() {
     return <React.Fragment>
-      <IsAuth isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
+      <IsAuth style={{backgroundColor: '#4F2F4F'}} isAuthenticated={this.isAuthenticated} setAuth={this.setAuth} />
     </React.Fragment>
   }
 }

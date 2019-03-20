@@ -58,32 +58,46 @@ export default class Login extends Component {
 
   render() {
     return (
+      <div>
+    <div class="container-fluid">
+    <div class="row  justify-content-center align-items-center d-flex text-center h-100">
+      <div class="col-12 col-md-8  h-50 ">
+          <h1 class="display-2 hero  text-light mb-2 mt-5"><strong>Joseph Gordon Love-it or Leave-it</strong> </h1>
+          <p class="lead  text-light">The first, only, and possibly best</p> <p class="lead text-light"> JGL-centric movie rating app</p>
+          </div>
+          </div>
+</div>
+       <style>{'body { background-image: url("https://imgnooz.com/sites/default/files/styles/1600x1200/public/wallpaper/celebrities/57954/joseph-gordon-levitt-wallpapers-57954-6755728.jpg?itok=Fjpf-dgE"); background-size: 80% }'}</style>
+      <div class="container-fluid">
+      <div class="col justify-content-center align-items-center d-flex text-center h-100">
       <form className="loginForm">
-        <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label htmlFor="inputUsername">Username</label>
         <input
+        class="form-control"
           onChange={this.handleFieldChange}
           type="username"
           id="username"
-          placeholder={` Something Cool`}
+          placeholder={`username`}
           required=""
           autoFocus=""
         />
-        <label htmlFor="inputPassword">Password</label>
         <input
+        class="form-control"
           onChange={this.handleFieldChange}
           type="password"
           id="password"
-          placeholder={` Don't tell!`}
+          placeholder={`password`}
           required=""
         />
-        <button type="submit" onClick={this.handleLogin}>
+        <button class="btn btn-link btn-lg   mt-md-3 mb-4 scroll align-self-center text-light" type="submit" onClick={this.handleLogin}>
           Sign in
         </button>
-        <button type="submit" onClick={this.handleRegister}>
+        <button class="btn btn-link btn-lg   mt-md-3 mb-4 scroll align-self-center text-light" type="submit" onClick={this.handleRegister}>
           Register
         </button>
       </form>
+      </div>
+      </div>
+      </div>
     )
   }
 }

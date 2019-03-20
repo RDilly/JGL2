@@ -6,6 +6,8 @@ class IsAuth extends Component {
   render() {
     return (
       <React.Fragment>
+
+
         {this.props.isAuthenticated() ? (
           <UserAccessLayer {...this.props} />
         ) : (

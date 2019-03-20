@@ -17,8 +17,12 @@ export default class Gallery extends Component {
         console.log(this.props)
         return (
             <React.Fragment>
- <style>{'body { background-color:  #f9f9f9; }'}</style>
-
+ <style>{'body {background: url("https://wallpaperhd.site/wp-content/uploads/2018/09/Wallpaper-joseph-gordon-levitt-dark-haired-long-haired-tie-shirt3987217807.jpg"), #ffffff ; background-repeat:no-repeat; background-position: 0px 130px ; background-size: 20%}'}</style>
+ <div class="container-fluid">
+    <div class="row  justify-content-center align-items-center d-flex text-center h-100">
+      <div class="col-12 col-md-8  h-50 ">
+          <h1 class="display-2 hero  text-dark mb-2 mt-5"><strong>Joseph Gordon Love-it or Leave-it</strong> </h1>
+</div></div></div>
                 <CardColumns>
                 {
                     this.props.movies.map(movie =>
