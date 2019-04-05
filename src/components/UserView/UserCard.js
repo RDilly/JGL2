@@ -5,6 +5,7 @@ import RatingWidget from 'react-rating-widget'
 import { get } from "http";
 import "./user.css"
 import UserModal from "./UserModal";
+import Fade from 'react-reveal/Fade';
 import StarRatingComponent from 'react-star-rating-component';
 import { Button, Container, Row, Col, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle  } from 'reactstrap'
@@ -54,7 +55,7 @@ export default class UserCard extends Component {
         console.log(`You have rated "${this.props.movie.title}" ` + answer.answer +" stars.");
     }
 
-    
+
 
     render() {
         let title = this.props.movie.title
@@ -65,6 +66,8 @@ export default class UserCard extends Component {
         let URLpp = this.props.movie.posterPath
         let fullPosterPath = `${ppURL}${URLpp}`
         let stars = this.props.rating.stars
+
+        
 
         const ratingReactions = { 1: "Joseph Gordon Leave-it", 2: "Joseph Gordon Leftovers", 3: "Joseph Gordon Luke-warm", 4: "Joseph Gordon Like-it", 5: "Joseph Gordon Loved it!" };
 
@@ -77,6 +80,7 @@ export default class UserCard extends Component {
         console.log(movieId)
         return (
             
+            <Fade>
             <Card body style={{ textAlign: 'center', color: '#6f6e6e', backgroundColor: '#e6e6e6', borderColor: '#e6e6e6' }}>
                 <Col xs="auto">
                 <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
@@ -117,6 +121,7 @@ export default class UserCard extends Component {
                 </Col>
             </Row>
             </Card>
+            </Fade>
 
         );
         }

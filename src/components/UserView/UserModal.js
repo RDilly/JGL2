@@ -19,6 +19,7 @@ export default class UserModal extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+    
   }
 
   changeUnmountOnClose(e) {

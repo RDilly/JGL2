@@ -5,6 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import { get } from "http";
 import "./gallery.css"
 import GalleryModal from './galleryModal'
+import Fade from 'react-reveal/Fade';
 import { Button, Container, Row, Col, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle  } from 'reactstrap'
 import "../../../node_modules/react-star-rating/dist/css/react-star-rating.min.css"
@@ -34,7 +35,7 @@ export default class GalleryCard extends Component {
         if (ratings.length == 0) {
             console.log("if")
             return (
-
+                <Fade>
                 <Card body style={{ textAlign: 'center', color: '#6f6e6e', backgroundColor: '#e6e6e6', borderColor: '#e6e6e6' }}>
                 <Col><CardTitle position="center">{title}</CardTitle></Col>
                 <Row buffer="20px"><Col></Col><GalleryModal  {...this.props}
@@ -43,7 +44,7 @@ export default class GalleryCard extends Component {
                 <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
                 </Col>
             </Card>
-    
+                </Fade>
             );
             
         } else {
@@ -58,7 +59,7 @@ export default class GalleryCard extends Component {
             console.log("avg", avg)
         return (
 
-
+                <Fade>
                 <Card body style={{ textAlign: 'center', color: '#6f6e6e', backgroundColor: '#e6e6e6', borderColor: '#e6e6e6' }}>
                 
                 <Col><CardTitle position="center">{title}</CardTitle></Col>
@@ -77,6 +78,7 @@ export default class GalleryCard extends Component {
                 <CardImg class="img-responsive" src={fullPosterPath} alt='movieposter' />
                 </Col>
             </Card>
+            </Fade>
         );
     }
 }

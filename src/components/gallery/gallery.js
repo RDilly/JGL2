@@ -17,7 +17,7 @@ export default class Gallery extends Component {
         console.log(this.props)
         return (
             <React.Fragment>
- <style>{'body {background: url("https://wallpaperhd.site/wp-content/uploads/2018/09/Wallpaper-joseph-gordon-levitt-dark-haired-long-haired-tie-shirt3987217807.jpg"), #ffffff ; background-repeat:no-repeat; background-position: 0px 130px ; background-size: 20%}'}</style>
+ <style>{'body {background color: #f1f1f1'}</style>
  <div class="container-fluid">
     <div class="row  justify-content-center align-items-center d-flex text-center h-100">
       <div class="col-12 col-md-8  h-50 ">

@@ -39,7 +39,7 @@ export default class GalleryModal extends React.Component {
     }
 
     AddRating = evt => {
-        this.toggle()
+        this.toggleTotal()
         evt.preventDefault()
           const newRating = {
               title: this.props.movie.title,
