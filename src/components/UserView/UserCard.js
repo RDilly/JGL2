@@ -1,14 +1,11 @@
 import RatingsManager from "../../modules/RatingsManager"
 import React, { Component } from "react"
-import ReactDOM from 'react-dom';
-import RatingWidget from 'react-rating-widget'
-import { get } from "http";
 import "./user.css"
 import UserModal from "./UserModal";
 import Fade from 'react-reveal/Fade';
 import StarRatingComponent from 'react-star-rating-component';
-import { Button, Container, Row, Col, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle  } from 'reactstrap'
+import { Button, Row, Col, Card, CardImg, CardBody,
+    CardTitle,  } from 'reactstrap'
 
 
 export default class UserCard extends Component {

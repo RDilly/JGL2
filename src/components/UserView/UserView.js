@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import UserCard from "./UserCard"
 import SearchMovies from "./SearchMovies"
-import { Container, Row, Col, CardColumns } from 'reactstrap';
+import { Row, CardColumns } from 'reactstrap';
 
 
 
@@ -13,7 +13,6 @@ export default class UserView extends Component {
 
     render() {
         const userId = parseInt(sessionStorage.getItem("credentials"))
-        const history = this.props.history;
         return (
             <React.Fragment>
                  <style>{'body { background-color:  #a9a9a9; }'}</style>

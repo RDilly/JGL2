@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import GalleryCard from "./galleryCard"
-import StarRatingComponent from "react-star-rating-component"
-import { Button, CardColumns  } from 'reactstrap'
+import {  CardColumns  } from 'reactstrap'
 import "./gallery.css"
 
 
@@ -13,7 +12,6 @@ export default class Gallery extends Component {
 
 
     render() {
-        const history = this.props.history;
         console.log(this.props)
         return (
             <React.Fragment>

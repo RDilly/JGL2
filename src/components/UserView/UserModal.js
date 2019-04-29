@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Form} from 'reactstrap';
 import RatingsManager from '../../modules/RatingsManager'
 import RatingWidget from 'react-rating-widget'
 
@@ -31,7 +31,7 @@ export default class UserModal extends React.Component {
     this.toggle()
     evt.preventDefault()
     console.log("memo memo memo", document.querySelector("#memo").value)
-    if (document.querySelector("#memo").value === "" && (isNaN(this.starsClicked)) == true)
+    if (document.querySelector("#memo").value === "" && (isNaN(this.starsClicked)) === true)
     {
       const editedRating = {
         id: this.props.rating.id,
@@ -42,7 +42,7 @@ export default class UserModal extends React.Component {
       }
       RatingsManager.updateRating(editedRating)
       console.log(editedRating)}
-      else if (document.querySelector("#memo").value === "" && (isNaN(this.starsClicked)) == false)
+      else if (document.querySelector("#memo").value === "" && (isNaN(this.starsClicked)) === false)
     {
       const editedRating = {
         id: this.props.rating.id,
@@ -53,7 +53,7 @@ export default class UserModal extends React.Component {
       }
       RatingsManager.updateRating(editedRating)
       console.log(editedRating)}
-         else if (document.querySelector("#memo").value != "" && (isNaN(this.starsClicked)) == true) {
+         else if (document.querySelector("#memo").value !== "" && (isNaN(this.starsClicked)) === true) {
           const editedRating = {
             id: this.props.rating.id,
             movieId: this.props.rating.movieId,

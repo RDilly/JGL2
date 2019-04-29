@@ -1,6 +1,5 @@
 import ReactSearchBox from 'react-search-box'
-import ReactDOM from 'react-dom'
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import NewModal from './NewModal';
  
@@ -26,7 +25,7 @@ data = []
 
   makeData() {
     this.props.movies.map(movie => {
-     this.data.push({
+     return this.data.push({
         key: movie.title,
         value: movie.title,
         movieId: movie.id,
