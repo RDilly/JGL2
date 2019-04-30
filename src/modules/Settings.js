@@ -1,4 +1,4 @@
 export default {
-    remoteURL: "http://localhost:3003",
+    remoteURL: "https://my-json-server.typicode.com/RDilly/json-test",
     userId: parseInt(sessionStorage.getItem("credentials"))
 }
