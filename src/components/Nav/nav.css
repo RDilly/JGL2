@@ -3,3 +3,8 @@
     z-index: 9;
     opacity: 1;
 }
+.headroom {
+    top: 0;
+    left: 0;
+    right: 0;
+  }

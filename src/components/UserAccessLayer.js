@@ -3,6 +3,7 @@ import Nav from "./Nav/Nav"
 import ApplicationViews from "./ApplicationViews"
 import UserManager from "../modules/UserManager"
 
+
 export default class UserAccessLayer extends Component {
   state = {
     activeUser: {}

@@ -67,7 +67,7 @@ export default class Login extends Component {
           </div>
           </div>
 </div>
-       <style>{'body { background-image: url("https://imgnooz.com/sites/default/files/styles/1600x1200/public/wallpaper/celebrities/57954/joseph-gordon-levitt-wallpapers-57954-6755728.jpg?itok=Fjpf-dgE"); background-size: 80% }'}</style>
+       <style>{'body { background-image: url("https://weppixel.com/sites/default/files/wallpaper/celebrities/57954/joseph-gordon-levitt-wallpapers-57954-6755728.jpg"); background-size: 80% }'}</style>
       <div class="container-fluid">
       <div class="col justify-content-center align-items-center d-flex text-center h-100">
       <form className="loginForm">
