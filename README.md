@@ -22,7 +22,13 @@ modals, intense modularization, and becoming familiar with ReactStrap.
 
 I became MUCH more familiar with modularization, reusability and how beneficial both of these practices are when building web apps.
 
-Also,
-I learned that if you're going to make a silly app about a celebrity,
+The biggest lesson that I learned is that if you're going to make a silly app about a celebrity,
 you should probably choose a celebrity that you actually like.
-I'm not a huge fan of JGL _(I only made this because the pun was too good to throw away)_, and not being a huge fan, I quickly grew tired of looking at his face for hours at a time. Next time I'll create **Paul Rudd-or-Dudd**
+
+I'm not a huge fan of JGL.
+I only made this because the pun was too good and silly to not make use of.
+
+Not being a huge fan,
+I quickly grew tired of looking at his face for hours at a time.
+
+Next time I'll create **Paul Rudd-or-Dudd**
